@@ -1,0 +1,1 @@
+const tvMazeUrl = 'https://api.tvmaze.com';
