@@ -15,5 +15,7 @@ class TvSeriesFeatureDI implements RegisterInjectionClient {
     // use cases
     injector.registerFactory<GetTvSeriesByName>(
         () => GetTvSeriesByNameImpl(injector.get()));
+    injector.registerFactory<GetTvSeriesById>(
+        () => GetTvSeriesByIdImpl(injector.get()));
   }
 }

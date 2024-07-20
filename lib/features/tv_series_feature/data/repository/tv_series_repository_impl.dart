@@ -23,4 +23,14 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Left(GetTvSeriesByNameCatchFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, TvShowEntity>> getTvSeriesById(int id) async {
+    try {
+      final result = await remoteDatasource.getTvSeriesById(id);
+      return Right(result);
+    } catch (e) {
+      return Left(GetTvSeriesByIdCatchFailure());
+    }
+  }
 }

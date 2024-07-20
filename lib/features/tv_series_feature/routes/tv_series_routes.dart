@@ -16,9 +16,23 @@ class TvSeriesRouter implements RouterClient {
         ),
       )
     ),
+    TvSeriesRoutes.tvSeriesDetailPage: MaterialPageRoute(
+      settings: settings,
+      builder: (_) {
+        final tvShowId = settings.arguments as int;
+        return ChangeNotifierProvider(
+          create: (context) => TvSeriesDetailState(),
+          child: SeriesDetailPage(
+            tvShowId: tvShowId,
+            getTvSeriesById: Injector.I.get(),
+          ),
+        );
+      }
+    ),
   };
 }
 
 class TvSeriesRoutes {
   static const tvSeriesPage = 'tv_series_page';
+  static const tvSeriesDetailPage = 'tv_series_detail_page';
 }

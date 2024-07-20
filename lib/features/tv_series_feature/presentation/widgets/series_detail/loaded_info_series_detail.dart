@@ -1,60 +1,50 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_modular/flutter_modular.dart';
-// import 'package:tv_series_app/features/series_feature/series_feature.dart';
-// import 'package:tv_series_app/features/shared/shared.dart';
-//
-// class LoadedInfoSeriesDetail extends StatelessWidget {
-//   const LoadedInfoSeriesDetail({
-//     super.key,
-//     required this.seasonList,
-//   });
-//
-//   final List<SeasonEntity> seasonList;
-//
-//   @override
-//   Widget build(BuildContext context) => Column(
-//         children: seasonList
-//             .map(
-//               (season) => Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.only(top: 12.0),
-//                     child: PaddingWithText(
-//                       text: 'Season ${season.number}',
-//                       fontSize: 20,
-//                     ),
-//                   ),
-//                   ListView.builder(
-//                     shrinkWrap: true,
-//                     physics: const NeverScrollableScrollPhysics(),
-//                     itemCount: season.episodes.length,
-//                     itemBuilder: (context, index) {
-//                       final episode = season.episodes[index];
-//                       return Padding(
-//                         padding: const EdgeInsets.only(
-//                           bottom: 12.0,
-//                           left: 12.0,
-//                           right: 12.0,
-//                         ),
-//                         child: CardInfo(
-//                           onTap: () => _onTapEpisodeCard(episode),
-//                           name:
-//                               '${episode.number.toString()} - ${episode.name}',
-//                           summary: episode.summary,
-//                           mediumImage: episode.mediumImage,
-//                         ),
-//                       );
-//                     },
-//                   ),
-//                 ],
-//               ),
-//             )
-//             .toList(),
-//       );
-//
-//   void _onTapEpisodeCard(EpisodeEntity episodeEntity) => Modular.to.pushNamed(
-//         SeriesNavigation.episodeDetail,
-//         arguments: episodeEntity,
-//       );
-// }
+import 'package:design_system/design_system.dart';
+import 'package:flutter/material.dart';
+import 'package:search_series/features/tv_series_feature/tv_series_feature.dart';
+
+class LoadedInfoSeriesDetail extends StatelessWidget {
+  const LoadedInfoSeriesDetail({
+    super.key,
+    required this.tvShowEntity,
+  });
+
+  final TvShowEntity tvShowEntity;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: DsSpacing.s),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: DsSpacing.s),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.60,
+                  width: double.infinity,
+                  child: ImageNetwork(
+                    imageUrl: tvShowEntity.originalImage,
+                    defaultIconColor: DsColors.blue,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: DsSpacing.xxs),
+              child: Text(
+                tvShowEntity.name,
+                style: DsTypography.textSemiBold.copyWith(fontSize: 24),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: DsSpacing.xxs),
+              child: Text(
+                tvShowEntity.summary,
+                style: DsTypography.textRegular.copyWith(fontSize: 18),
+              ),
+            ),
+          ],
+        ),
+      );
+}

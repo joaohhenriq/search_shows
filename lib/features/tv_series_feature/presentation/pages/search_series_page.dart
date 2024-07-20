@@ -50,7 +50,10 @@ class _TvSearchSeriesPageState extends State<TvSearchSeriesPage> {
                     return const CenteredText(text: 'Search for a series');
                   case SearchSeriesStatusEnum.loading:
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: DsSpacing.xxl),
+                        child: CircularProgressWidget(),
+                      ),
                     );
                   case SearchSeriesStatusEnum.loaded:
                     return Expanded(
@@ -98,5 +101,10 @@ class _TvSearchSeriesPageState extends State<TvSearchSeriesPage> {
     }
   }
 
-  Future<void> _onTapCard(TvShowEntity tvShowEntity) async {}
+  Future<void> _onTapCard(TvShowEntity tvShowEntity) async =>
+      await Navigator.pushNamed(
+        context,
+        TvSeriesRoutes.tvSeriesDetailPage,
+        arguments: tvShowEntity.id,
+      );
 }

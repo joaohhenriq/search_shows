@@ -1,31 +1,24 @@
-// import 'package:flutter/material.dart';
-// import 'package:tv_series_app/features/series_feature/series_feature.dart';
-//
-// enum EpisodeListStatus {
-//   loading,
-//   loaded,
-//   error,
-//   empty,
-// }
-//
-// class SeriesDetailState extends ChangeNotifier {
-//   EpisodeListStatus episodeListStatus = EpisodeListStatus.loading;
-//   List<SeasonEntity> seasonList = [];
-//   bool isFavorite = false;
-//
-//   void updateSeasonList(List<SeasonEntity> seasons) {
-//     episodeListStatus = EpisodeListStatus.loaded;
-//     seasonList = seasons;
-//     notifyListeners();
-//   }
-//
-//   void updateEpisodeListStatus(EpisodeListStatus status) {
-//     episodeListStatus = status;
-//     notifyListeners();
-//   }
-//
-//   void updateIsFavorite(bool value) {
-//     isFavorite = value;
-//     notifyListeners();
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:search_series/features/tv_series_feature/tv_series_feature.dart';
+
+enum TvSeriesDetailsStatus {
+  loading,
+  loaded,
+  error,
+}
+
+class TvSeriesDetailState extends ChangeNotifier {
+  TvSeriesDetailsStatus tvSeriesDetailsStatus = TvSeriesDetailsStatus.loading;
+  TvShowEntity tvShowDetails = const TvShowEntity();
+
+  void updateTvSeriesDetailsStatus(TvSeriesDetailsStatus value) {
+    tvSeriesDetailsStatus = value;
+    notifyListeners();
+  }
+
+  void updateTvShowDetails(TvShowEntity value) {
+    tvSeriesDetailsStatus = TvSeriesDetailsStatus.loaded;
+    tvShowDetails = value;
+    notifyListeners();
+  }
+}

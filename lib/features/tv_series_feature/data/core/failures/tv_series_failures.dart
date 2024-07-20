@@ -4,5 +4,7 @@ class GetTvSeriesByNameEmptyListFailure extends Failure {}
 
 class GetTvSeriesByNameCatchFailure extends Failure {}
 
+class GetTvSeriesByIdCatchFailure extends Failure {}
+
 
 
