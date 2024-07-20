@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:search_series/features/login_feature/login_feature.dart';
+import 'package:search_series/features/tv_series_feature/tv_series_feature.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -105,7 +106,10 @@ class _LoginPageState extends State<LoginPage> {
       );
       updateLoading(false);
       if (result) {
-        await Navigator.pushReplacementNamed(context, '/tv_series');
+        await Navigator.pushReplacementNamed(
+          context,
+          TvSeriesRoutes.tvSeriesPage,
+        );
       } else {
         showDialog(
           context: context,

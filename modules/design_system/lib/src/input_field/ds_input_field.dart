@@ -8,6 +8,7 @@ class DsInputField extends StatelessWidget {
     this.obscureText = false,
     this.prefixIcon,
     this.validator,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -16,6 +17,7 @@ class DsInputField extends StatelessWidget {
   final bool obscureText;
   final IconData? prefixIcon;
   final String? Function(String?)? validator;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) => TextFormField(
@@ -29,6 +31,7 @@ class DsInputField extends StatelessWidget {
           fontSize: 18,
           color: DsColors.inputValueColor,
         ),
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           prefixIcon: prefixIcon != null ? _buildPrefixIcon(prefixIcon!) : null,
           contentPadding: const EdgeInsets.symmetric(

@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:search_series/features/login_feature/login_feature.dart';
 import 'package:search_series/features/splash_feature/splash_feature.dart';
+import 'package:search_series/features/tv_series_feature/tv_series_feature.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({
@@ -93,7 +94,7 @@ class _SplashPageState extends State<SplashPage>
   Future<void> _isUserAuthenticated() async {
     final result = await widget.isUserAuthenticated();
     final route = result.isRight && result.right
-        ? '/tv_series'
+        ? TvSeriesRoutes.tvSeriesPage
         : LoginRoutes.loginPage;
 
     await Navigator.pushReplacementNamed(context, route);

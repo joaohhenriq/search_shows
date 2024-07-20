@@ -4,6 +4,7 @@ class DsColors {
   // background colors
   static Color backgroundColorPrimary = const Color(0xFFFFFFFF);
   static Color backgroundColorSecondary = const Color(0xFFF4F8FA);
+  static Color backgroundColorTertiary = Colors.black54;
 
   // text colors
   static Color textDark = const Color(0xFF1E2A32);
