@@ -15,21 +15,6 @@ class TvShowModel extends TvShowEntity {
     super.summary = '',
   });
 
-  factory TvShowModel.fromEntity(TvShowEntity entity) {
-    return TvShowModel(
-      id: entity.id,
-      name: entity.name,
-      mediumImage: entity.mediumImage,
-      originalImage: entity.originalImage,
-      premiered: entity.premiered,
-      ended: entity.ended,
-      scheduleDays: entity.scheduleDays,
-      scheduleTime: entity.scheduleTime,
-      genres: entity.genres,
-      summary: entity.summary,
-    );
-  }
-
   factory TvShowModel.fromMap(Map<String, dynamic> map) {
     final show = map['show'] ?? map;
     return TvShowModel(
@@ -54,24 +39,5 @@ class TvShowModel extends TvShowEntity {
       genres: List<String>.from(show['genres'] ?? []),
       summary: Helpers.removeHtmlFromString(show['summary'] ?? ''),
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'image': {
-        'medium': mediumImage,
-        'original': originalImage,
-      },
-      'premiered': premiered,
-      'ended': ended,
-      'schedule': {
-        'days': scheduleDays,
-        'time': scheduleTime,
-      },
-      'genres': genres,
-      'summary': summary,
-    };
   }
 }

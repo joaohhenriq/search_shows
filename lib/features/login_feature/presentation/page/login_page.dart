@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   prefixIcon: Icons.person,
                   validator: (value) => _inputValidator(
                     value,
-                    'Please enter a valid username',
+                    'Please enter a valid user',
                   ),
                 ),
               ),
