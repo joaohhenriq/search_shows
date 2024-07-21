@@ -14,8 +14,11 @@ class ImageNetwork extends StatelessWidget {
   Widget build(BuildContext context) => imageUrl.isNotEmpty
       ? Image.network(
           imageUrl,
-          loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent? loadingProgress) {
+          loadingBuilder: (
+            BuildContext context,
+            Widget child,
+            ImageChunkEvent? loadingProgress,
+          ) {
             if (loadingProgress == null) return child;
             return Center(
               child: CircularProgressIndicator(

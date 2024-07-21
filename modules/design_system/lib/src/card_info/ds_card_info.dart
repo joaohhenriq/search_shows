@@ -58,7 +58,7 @@ class DsCardInfo extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: DsSpacing.xxxs),
                         child: Text(
-                          title.isNotEmpty ? title : 'No name available',
+                          title.isNotEmpty ? title : 'No title available',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: DsTypography.textMedium.copyWith(
